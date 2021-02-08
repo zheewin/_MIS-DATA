@@ -19,14 +19,46 @@ def Area_Wide_Long_AreaCompanyDate(FileData,x):
         DataX[i]=Melt_F(FileData,element)
     # ------- Merge -> df(Wide)
     AllTab=DataX[0]
-    # st.dataframe(AllTab)
+    st.dataframe(AllTab)
     for i in range(len(DataX)-1):
         AllTab = pd.merge(AllTab,DataX[i+1],on =['Company','Area','Date'],how ='inner') 
     df=AllTab
     # ------- Melt -> df(Long)
     df = df.melt(id_vars=['Area','Company','Date'], var_name=['VarAll'], value_name='ValueAll')
+    st.dataframe(df)
+    return df
+
+def Melt_F_Code(FileExcel,SheetName): # ------- Area + Doc
+    df1=pd.read_excel(open(FileExcel, 'rb'), sheet_name='Area') 
+    # st.write(df1)
+    df2=pd.read_excel(open(FileExcel, 'rb'), sheet_name=SheetName)
+    df2['Code'] = df2['Code'].apply(lambda x: '{0:0>4}'.format(x))
+    # st.write(df2)
+    df = pd.merge(df1,df2,on ='Code',how ='inner') 
+    SheetName = df.melt(id_vars=['Area','Company','Code'], var_name=['Date'], value_name=SheetName)
+    # SheetName['Code'] = SheetName['Code'].apply(lambda x: '{0:0>4}'.format(x))
+    # st.write(SheetName)
+    return SheetName
+def Area_Wide_Long_AreaCompanyDate_Code(FileData,x):
+    # ------- Area + Doc
+    DataX={}
+    for i,element in enumerate(x):
+        DataX[i]=Melt_F_Code(FileData,element)
+    AllTab=DataX[0]
+    # st.dataframe(AllTab)
+
+    # ------- Merge -> df(Wide)
+    for i in range(len(DataX)-1):
+        AllTab = pd.merge(AllTab,DataX[i+1],on =['Company','Area','Code','Date'],how ='inner') 
+    df=AllTab
+    # st.dataframe(df)
+
+    # ------- Melt -> df(Long)
+    df = df.melt(id_vars=['Area','Company','Code','Date'], var_name=['VarAll'], value_name='ValueAll')
     # st.dataframe(df)
     return df
+
+
 def YearMonthValue(FileData,x):
     # ------- All Tab
     DataX={}

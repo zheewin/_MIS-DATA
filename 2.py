@@ -1,14 +1,12 @@
 #----------------------------------------------------------------------------------
 import pandas as pd 
-import streamlit as st  # streamlit run app.py
+import streamlit as st  # streamlit run 0.py
 import altair as alt
 import Function1 as F1
 import sys 
 import time
 import os
 import dateutil
-#----------------------------------------------------------------------------------
-st.set_page_config(page_title='MIS Analize', page_icon="https://raw.githubusercontent.com/zheewin/PicDATA/master/Man1.jpg", layout='centered', initial_sidebar_state='auto')
 #----------------------------------------------------------------------------------
 def RunAdmin():
     st.write('Admin')
@@ -20,39 +18,10 @@ def RunAdmin():
             FileData=r'MIS_Data.xls'
             x = ['Actual2021','Actual2020']
             df= F1.Area_Wide_Long_AreaCompanyDate(FileData,x)
-            df.to_csv(r'Data/ActualProduction_ACDx2_L.csv', index = False, header=True)
+            df.to_csv(r'Data/Area_W_L_AreaCompanyDate2X.csv', index = False, header=True)
             st.success("Uploaded Data:{} OK".format('Area_W_L_AreaCompanyDate2X.csv'))
             #----------------------------------------------------------------------------------
             #----------------------------------------------------------------------------------
-
-
-    FileData=r'MISReport2021.xls'
-    x = ['LOSS_总损耗',
-        'PELLET_颗粒料产量',
-        'MIXER_混合机（理论）产量',
-        'PERFORMANCE_吨人月',
-        '劳务工_LABOUR',
-        '正式工_STAFF',
-        'ELECTRIC_CONSUMPTION',
-        'ALL_WAGE_EXPENSE',
-        'MASH_BAG_EXPENSE',
-        'PELLET_BAG_EXPENSE',
-        'TOTAL_EXPENSE_总制造费用',
-        'OTHERS_EXPENSE_其它生产费用',
-        'FACTORY_EXPENSE_直接制造费用',
-        'VARIABLE_EXPENSE_变动费用',
-        'PRODUCTION_AV_LastY',
-        'PRODUCTION_YearPlan',
-        'PRODUCTION_All',
-        'PRODUCTION_PELLET',
-        ]
-    df= F1.Area_Wide_Long_AreaCompanyDate_Code(FileData,x)
-
-    df.to_csv(r'Data/MISReport2021.csv', index = False, header=True)
-    st.success("Uploaded Data:{} OK".format('MISReport2021.csv'))
-
-
-
 #----------------------------------------------------------------------------------
 
 def LogIn():
