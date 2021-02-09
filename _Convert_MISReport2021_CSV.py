@@ -45,11 +45,15 @@ def RunAdmin():
         'PRODUCTION_YearPlan',
         'PRODUCTION_All',
         'PRODUCTION_PELLET',
+        'PRODUCTION_2021Cap',
+        'PRODUCTION_2020',
         ]
     df= F1.Area_Wide_Long_AreaCompanyDate_Code(FileData,x)
 
     df.to_csv(r'Data/MISReport2021.csv', index = False, header=True)
     st.success("Uploaded Data:{} OK".format('MISReport2021.csv'))
+    print("Uploaded Data:{} OK".format('MISReport2021.csv'))
+
 
 
 
@@ -87,5 +91,6 @@ def LogIn():
             st.error('Incorrect username or password')
 #----------------------------------------------------------------------------------
 
-LogIn()
+# LogIn()
+RunAdmin()
 
