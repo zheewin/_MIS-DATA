@@ -48,8 +48,8 @@ def RunAdmin():
         'PRODUCTION_2021Cap',
         'PRODUCTION_2020',
         ]
-    df= F1.Area_Wide_Long_AreaCompanyDate_Code(FileData,x)
 
+    df= F1.Area_Wide_Long_AreaCompanyDate_Code(FileData,x)
     df.to_csv(r'Data/MISReport2021.csv', index = False, header=True)
     st.success("Uploaded Data:{} OK".format('MISReport2021.csv'))
     print("Uploaded Data:{} OK".format('MISReport2021.csv'))
