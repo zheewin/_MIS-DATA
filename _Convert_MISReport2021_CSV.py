@@ -92,5 +92,12 @@ def LogIn():
 #----------------------------------------------------------------------------------
 
 # LogIn()
-RunAdmin()
+RunUpdate = st.button('Run Update monthly DaTA')
+if RunUpdate:
+    RunAdmin()
+
+
+
+
+
 
