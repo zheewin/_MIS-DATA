@@ -92,7 +92,7 @@ def LogIn():
 #----------------------------------------------------------------------------------
 
 # LogIn()
-RunUpdate = st.button('Run Update monthly DaTA')
+RunUpdate = st.button('Run Update monthly DaTA ( MISReport2021.xls -> MISReport2021.csv )')
 if RunUpdate:
     RunAdmin()
 
